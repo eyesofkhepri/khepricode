@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 특정 객체를 갖는 List값에서 특정 다중 ID값으로 여러 데이터를 그룹화 하는 예제.
+ * 특정 객체를 갖는 List값에서 특정 다중 ID값으로 여러 데이터를 그룹화 하는 예제..
  */
 public class GroupingExam1 {
     public static void main(String[] args) {
