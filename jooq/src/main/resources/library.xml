@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.10.0.xsd">
+    <!-- 데이터베이스 설정 -->
+    <jdbc>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://127.0.0.1:3306/db_jooq</url>
+        <user>jooq</user>
+        <password>pray</password>
+    </jdbc>
+
+    <generator>
+        <!-- 기본적으로 제공하는 코드 제네레이터 여기서 1개를 선택해야 한다. 현재 아래와 같은 java,scala 2개의 제네레이터 제공
+             - org.jooq.util.JavaGenerator
+             - org.jooq.util.ScalaGenerator
+             JavaGenerator값이 기본값. -->
+        <name>org.jooq.util.JavaGenerator</name>
+
+        <database>
+            <!-- 데이터베이스 타입을 지정 org.util.[database].[database]Database]의 포맷을 가진다. -->
+            <name>org.jooq.util.mysql.MySQLDatabase</name>
+
+            <!-- 코드로 변환할 데이터베이스의 owner나 user, database이름을 선언한다. -->
+            <inputSchema>library</inputSchema>
+
+            <!-- 변환할 항목을 정규식 형태로 작성한다. -->
+            <includes>.*</includes>
+
+            <!-- 변환하면 안될 항목을 정규식 형태로 작성한다. -->
+            <excludes></excludes>
+        </database>
+
+        <target>
+            <!-- 변환된 코드가 저장될 package 명이다 <directory>경로 하위로 packageName이 생성된다. -->
+            <packageName>test.generated</packageName>
+
+            <!-- 변환된 코드가 저장될 디렉토리 경로 -->
+            <directory>D:/khepri/source/khepricode/jooq/target/classes</directory>
+        </target>
+    </generator>
+</configuration>
