@@ -60,48 +60,43 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-            <!-- jooq generator plug-in -->
+            <!-- jooq code generator plugin -->
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
+                <version>3.10.1</version>
 
                 <executions>
                     <execution>
-                        <id>generate-mysql</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
-                        <configuration>
-                            <jdbc>
-                                <driver>com.mysql.jdbc.Driver</driver>
-                                <url>jdbc:mysql://127.0.0.1:3306/db_foxad</url>
-                                <user>foxteam</user>
-                                <password>pray</password>
-                            </jdbc>
-                            <generator>
-                                <database>
-                                    <name>org.jooq.util.mysql.MySQLDatabase</name>
-                                    <includes>.*</includes>
-                                    <excludes></excludes>
-                                    <dateAsTimestamp>true</dateAsTimestamp>
-                                    <inputSchema>PUBLIC</inputSchema>
-                                </database>
-                                <generate>
-                                    <deprecated>false</deprecated>
-                                    <instanceFields>true</instanceFields>
-                                    <pojos>true</pojos>
-                                </generate>
-                                <target>
-                                    <packageName>org.jooq.example.db.h2</packageName>
-                                    <packageName>com.eyesofkhepri.springbootjooq.db.mysql</packageName>
-                                    <directory>target/generated-sources/jooq-mysql</directory>
-                                </target>
-                            </generator>
-                        </configuration>
                     </execution>
                 </executions>
+
+                <configuration>
+                    <jdbc>
+                        <driver>com.mysql.jdbc.Driver</driver>
+                        <url>jdbc:mysql://127.0.0.1:3306/db_jooq</url>
+                        <user>jooq</user>
+                        <password>pray</password>
+                    </jdbc>
+
+                    <generator>
+                        <database>
+                            <name>org.jooq.util.mysql.MySQLDatabase</name>
+                            <includes>.*</includes>
+                            <excludes></excludes>
+                            <inputSchema>db_jooq</inputSchema>
+                        </database>
+                        <target>
+                            <packageName>com.eyesofkhepri.springbootjooq.generate</packageName>
+                            <directory>src/main/java</directory>
+                        </target>
+                    </generator>
+                </configuration>
             </plugin>
+
 		</plugins>
 	</build>
 
