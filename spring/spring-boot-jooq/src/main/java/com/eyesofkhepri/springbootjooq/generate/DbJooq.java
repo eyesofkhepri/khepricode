@@ -5,6 +5,10 @@ package com.eyesofkhepri.springbootjooq.generate;
 
 
 import com.eyesofkhepri.springbootjooq.generate.tables.Author;
+import com.eyesofkhepri.springbootjooq.generate.tables.Book;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.Language;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +34,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DbJooq extends SchemaImpl {
 
-    private static final long serialVersionUID = -412262399;
+    private static final long serialVersionUID = 791373817;
 
     /**
      * The reference instance of <code>db_jooq</code>
@@ -41,6 +45,26 @@ public class DbJooq extends SchemaImpl {
      * The table <code>db_jooq.author</code>.
      */
     public final Author AUTHOR = com.eyesofkhepri.springbootjooq.generate.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>db_jooq.book</code>.
+     */
+    public final Book BOOK = com.eyesofkhepri.springbootjooq.generate.tables.Book.BOOK;
+
+    /**
+     * The table <code>db_jooq.book_store</code>.
+     */
+    public final BookStore BOOK_STORE = com.eyesofkhepri.springbootjooq.generate.tables.BookStore.BOOK_STORE;
+
+    /**
+     * The table <code>db_jooq.book_to_book_store</code>.
+     */
+    public final BookToBookStore BOOK_TO_BOOK_STORE = com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore.BOOK_TO_BOOK_STORE;
+
+    /**
+     * The table <code>db_jooq.language</code>.
+     */
+    public final Language LANGUAGE = com.eyesofkhepri.springbootjooq.generate.tables.Language.LANGUAGE;
 
     /**
      * No further instances allowed
@@ -67,6 +91,10 @@ public class DbJooq extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Author.AUTHOR);
+            Author.AUTHOR,
+            Book.BOOK,
+            BookStore.BOOK_STORE,
+            BookToBookStore.BOOK_TO_BOOK_STORE,
+            Language.LANGUAGE);
     }
 }

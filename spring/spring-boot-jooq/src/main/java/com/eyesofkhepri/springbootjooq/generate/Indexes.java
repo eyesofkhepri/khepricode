@@ -5,6 +5,10 @@ package com.eyesofkhepri.springbootjooq.generate;
 
 
 import com.eyesofkhepri.springbootjooq.generate.tables.Author;
+import com.eyesofkhepri.springbootjooq.generate.tables.Book;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.Language;
 
 import javax.annotation.Generated;
 
@@ -31,6 +35,13 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     public static final Index AUTHOR_PRIMARY = Indexes0.AUTHOR_PRIMARY;
+    public static final Index BOOK_FK_BOOK_AUTHOR = Indexes0.BOOK_FK_BOOK_AUTHOR;
+    public static final Index BOOK_FK_BOOK_LANGUAGE = Indexes0.BOOK_FK_BOOK_LANGUAGE;
+    public static final Index BOOK_PRIMARY = Indexes0.BOOK_PRIMARY;
+    public static final Index BOOK_STORE_NAME = Indexes0.BOOK_STORE_NAME;
+    public static final Index BOOK_TO_BOOK_STORE_FK_B2BS_BOOK = Indexes0.BOOK_TO_BOOK_STORE_FK_B2BS_BOOK;
+    public static final Index BOOK_TO_BOOK_STORE_PRIMARY = Indexes0.BOOK_TO_BOOK_STORE_PRIMARY;
+    public static final Index LANGUAGE_PRIMARY = Indexes0.LANGUAGE_PRIMARY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -38,5 +49,12 @@ public class Indexes {
 
     private static class Indexes0 extends AbstractKeys {
         public static Index AUTHOR_PRIMARY = createIndex("PRIMARY", Author.AUTHOR, new OrderField[] { Author.AUTHOR.ID }, true);
+        public static Index BOOK_FK_BOOK_AUTHOR = createIndex("fk_book_author", Book.BOOK, new OrderField[] { Book.BOOK.AUTHOR_ID }, false);
+        public static Index BOOK_FK_BOOK_LANGUAGE = createIndex("fk_book_language", Book.BOOK, new OrderField[] { Book.BOOK.LANGUAGE_ID }, false);
+        public static Index BOOK_PRIMARY = createIndex("PRIMARY", Book.BOOK, new OrderField[] { Book.BOOK.ID }, true);
+        public static Index BOOK_STORE_NAME = createIndex("name", BookStore.BOOK_STORE, new OrderField[] { BookStore.BOOK_STORE.NAME }, true);
+        public static Index BOOK_TO_BOOK_STORE_FK_B2BS_BOOK = createIndex("fk_b2bs_book", BookToBookStore.BOOK_TO_BOOK_STORE, new OrderField[] { BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID }, false);
+        public static Index BOOK_TO_BOOK_STORE_PRIMARY = createIndex("PRIMARY", BookToBookStore.BOOK_TO_BOOK_STORE, new OrderField[] { BookToBookStore.BOOK_TO_BOOK_STORE.NAME, BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID }, true);
+        public static Index LANGUAGE_PRIMARY = createIndex("PRIMARY", Language.LANGUAGE, new OrderField[] { Language.LANGUAGE.ID }, true);
     }
 }

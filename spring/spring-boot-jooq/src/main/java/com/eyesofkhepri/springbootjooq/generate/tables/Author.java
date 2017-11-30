@@ -9,6 +9,7 @@ import com.eyesofkhepri.springbootjooq.generate.Indexes;
 import com.eyesofkhepri.springbootjooq.generate.Keys;
 import com.eyesofkhepri.springbootjooq.generate.tables.records.AuthorRecord;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +39,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author extends TableImpl<AuthorRecord> {
 
-    private static final long serialVersionUID = -1665612580;
+    private static final long serialVersionUID = -217035024;
 
     /**
      * The reference instance of <code>db_jooq.author</code>
@@ -61,12 +62,27 @@ public class Author extends TableImpl<AuthorRecord> {
     /**
      * The column <code>db_jooq.author.first_name</code>.
      */
-    public final TableField<AuthorRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<AuthorRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>db_jooq.author.last_name</code>.
      */
-    public final TableField<AuthorRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<AuthorRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR(50).nullable(false), this, "");
+
+    /**
+     * The column <code>db_jooq.author.date_of_birth</code>.
+     */
+    public final TableField<AuthorRecord, Date> DATE_OF_BIRTH = createField("date_of_birth", org.jooq.impl.SQLDataType.DATE, this, "");
+
+    /**
+     * The column <code>db_jooq.author.year_of_birth</code>.
+     */
+    public final TableField<AuthorRecord, Integer> YEAR_OF_BIRTH = createField("year_of_birth", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>db_jooq.author.distinguished</code>.
+     */
+    public final TableField<AuthorRecord, Integer> DISTINGUISHED = createField("distinguished", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>db_jooq.author</code> table reference

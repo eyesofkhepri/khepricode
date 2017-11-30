@@ -54,6 +54,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
@@ -88,10 +93,17 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -109,6 +121,7 @@
 
                 <executions>
                     <execution>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -123,9 +136,17 @@
                         <password>pray</password>
                     </jdbc>
 
+                  <!-- used flyway
+                    <jdbc>
+                        <driver>com.mysql.jdbc.Driver</driver>
+                        <url>jdbc:mysql://127.0.0.1:3306/db_flyway_version</url>
+                        <user>fly</user>
+                        <password>pray</password>
+                    </jdbc>-->
+
                     <generator>
                         <database>
-                            <name>org.jooq.util.mysql.MySQLDatabase</name>
+							<name>org.jooq.util.mysql.MySQLDatabase</name>
                             <includes>.*</includes>
                             <excludes></excludes>
                             <inputSchema>db_jooq</inputSchema>
@@ -137,6 +158,29 @@
                     </generator>
                 </configuration>
             </plugin>
+
+            <!-- Flyway plugin -->
+            <!--<plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>3.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <url>jdbc:mysql://127.0.0.1:3306/db_flyway_version</url>
+                    <user>fly</user>
+                    <password>pray</password>
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+            </plugin>-->
 
 		</plugins>
 	</build>

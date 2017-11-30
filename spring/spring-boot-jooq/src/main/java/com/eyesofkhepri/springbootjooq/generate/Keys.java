@@ -5,10 +5,19 @@ package com.eyesofkhepri.springbootjooq.generate;
 
 
 import com.eyesofkhepri.springbootjooq.generate.tables.Author;
+import com.eyesofkhepri.springbootjooq.generate.tables.Book;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.Language;
 import com.eyesofkhepri.springbootjooq.generate.tables.records.AuthorRecord;
+import com.eyesofkhepri.springbootjooq.generate.tables.records.BookRecord;
+import com.eyesofkhepri.springbootjooq.generate.tables.records.BookStoreRecord;
+import com.eyesofkhepri.springbootjooq.generate.tables.records.BookToBookStoreRecord;
+import com.eyesofkhepri.springbootjooq.generate.tables.records.LanguageRecord;
 
 import javax.annotation.Generated;
 
+import org.jooq.ForeignKey;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
@@ -37,11 +46,19 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AuthorRecord> KEY_AUTHOR_PRIMARY = UniqueKeys0.KEY_AUTHOR_PRIMARY;
+    public static final UniqueKey<BookRecord> KEY_BOOK_PRIMARY = UniqueKeys0.KEY_BOOK_PRIMARY;
+    public static final UniqueKey<BookStoreRecord> KEY_BOOK_STORE_NAME = UniqueKeys0.KEY_BOOK_STORE_NAME;
+    public static final UniqueKey<BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = UniqueKeys0.KEY_BOOK_TO_BOOK_STORE_PRIMARY;
+    public static final UniqueKey<LanguageRecord> KEY_LANGUAGE_PRIMARY = UniqueKeys0.KEY_LANGUAGE_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<BookRecord, AuthorRecord> FK_BOOK_AUTHOR = ForeignKeys0.FK_BOOK_AUTHOR;
+    public static final ForeignKey<BookRecord, LanguageRecord> FK_BOOK_LANGUAGE = ForeignKeys0.FK_BOOK_LANGUAGE;
+    public static final ForeignKey<BookToBookStoreRecord, BookStoreRecord> FK_B2BS_BOOK_STORE = ForeignKeys0.FK_B2BS_BOOK_STORE;
+    public static final ForeignKey<BookToBookStoreRecord, BookRecord> FK_B2BS_BOOK = ForeignKeys0.FK_B2BS_BOOK;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -49,5 +66,16 @@ public class Keys {
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AuthorRecord> KEY_AUTHOR_PRIMARY = createUniqueKey(Author.AUTHOR, "KEY_author_PRIMARY", Author.AUTHOR.ID);
+        public static final UniqueKey<BookRecord> KEY_BOOK_PRIMARY = createUniqueKey(Book.BOOK, "KEY_book_PRIMARY", Book.BOOK.ID);
+        public static final UniqueKey<BookStoreRecord> KEY_BOOK_STORE_NAME = createUniqueKey(BookStore.BOOK_STORE, "KEY_book_store_name", BookStore.BOOK_STORE.NAME);
+        public static final UniqueKey<BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = createUniqueKey(BookToBookStore.BOOK_TO_BOOK_STORE, "KEY_book_to_book_store_PRIMARY", BookToBookStore.BOOK_TO_BOOK_STORE.NAME, BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID);
+        public static final UniqueKey<LanguageRecord> KEY_LANGUAGE_PRIMARY = createUniqueKey(Language.LANGUAGE, "KEY_language_PRIMARY", Language.LANGUAGE.ID);
+    }
+
+    private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<BookRecord, AuthorRecord> FK_BOOK_AUTHOR = createForeignKey(com.eyesofkhepri.springbootjooq.generate.Keys.KEY_AUTHOR_PRIMARY, Book.BOOK, "fk_book_author", Book.BOOK.AUTHOR_ID);
+        public static final ForeignKey<BookRecord, LanguageRecord> FK_BOOK_LANGUAGE = createForeignKey(com.eyesofkhepri.springbootjooq.generate.Keys.KEY_LANGUAGE_PRIMARY, Book.BOOK, "fk_book_language", Book.BOOK.LANGUAGE_ID);
+        public static final ForeignKey<BookToBookStoreRecord, BookStoreRecord> FK_B2BS_BOOK_STORE = createForeignKey(com.eyesofkhepri.springbootjooq.generate.Keys.KEY_BOOK_STORE_NAME, BookToBookStore.BOOK_TO_BOOK_STORE, "fk_b2bs_book_store", BookToBookStore.BOOK_TO_BOOK_STORE.NAME);
+        public static final ForeignKey<BookToBookStoreRecord, BookRecord> FK_B2BS_BOOK = createForeignKey(com.eyesofkhepri.springbootjooq.generate.Keys.KEY_BOOK_PRIMARY, BookToBookStore.BOOK_TO_BOOK_STORE, "fk_b2bs_book", BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID);
     }
 }

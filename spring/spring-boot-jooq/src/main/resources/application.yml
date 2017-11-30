@@ -14,6 +14,15 @@ server:
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/db_foxad
-        username: foxteam
+        url: jdbc:mysql://127.0.0.1:3306/db_jooq
+        username: jooq
         password: pray
+        dbcp2:
+            initial-size: 5
+            max-total: 10
+# preparedStatements 풀링(자주실행되는 Statements를 풀링해놓고 사용 성능이점)
+            pool-prepared-statements: true
+            max-open-prepared-statements: 10
+
+# jOOQ Configuration
+# spring.jooq.sql-dialect=Mysql

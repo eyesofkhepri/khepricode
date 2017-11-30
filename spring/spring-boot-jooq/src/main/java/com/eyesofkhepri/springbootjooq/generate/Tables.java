@@ -5,6 +5,10 @@ package com.eyesofkhepri.springbootjooq.generate;
 
 
 import com.eyesofkhepri.springbootjooq.generate.tables.Author;
+import com.eyesofkhepri.springbootjooq.generate.tables.Book;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore;
+import com.eyesofkhepri.springbootjooq.generate.tables.Language;
 
 import javax.annotation.Generated;
 
@@ -26,4 +30,24 @@ public class Tables {
      * The table <code>db_jooq.author</code>.
      */
     public static final Author AUTHOR = com.eyesofkhepri.springbootjooq.generate.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>db_jooq.book</code>.
+     */
+    public static final Book BOOK = com.eyesofkhepri.springbootjooq.generate.tables.Book.BOOK;
+
+    /**
+     * The table <code>db_jooq.book_store</code>.
+     */
+    public static final BookStore BOOK_STORE = com.eyesofkhepri.springbootjooq.generate.tables.BookStore.BOOK_STORE;
+
+    /**
+     * The table <code>db_jooq.book_to_book_store</code>.
+     */
+    public static final BookToBookStore BOOK_TO_BOOK_STORE = com.eyesofkhepri.springbootjooq.generate.tables.BookToBookStore.BOOK_TO_BOOK_STORE;
+
+    /**
+     * The table <code>db_jooq.language</code>.
+     */
+    public static final Language LANGUAGE = com.eyesofkhepri.springbootjooq.generate.tables.Language.LANGUAGE;
 }

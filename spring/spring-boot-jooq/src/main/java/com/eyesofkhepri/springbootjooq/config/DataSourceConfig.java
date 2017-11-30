@@ -2,6 +2,7 @@ package com.eyesofkhepri.springbootjooq.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.ExecuteContext;
+import org.jooq.SQLDialect;
 import org.jooq.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +31,7 @@ public class DataSourceConfig {
     public DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
         jooqConfiguration.set(connectionProvider());
+        jooqConfiguration.set(SQLDialect.MYSQL);
         jooqConfiguration.set(new DefaultExecuteListenerProvider(new DefaultExecuteListener() {
             public void start(ExecuteContext ctx) {
                 log.info("Start Transaction");
