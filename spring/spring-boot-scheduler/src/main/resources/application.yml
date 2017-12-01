@@ -1,0 +1,13 @@
+server:
+    port: 8081
+
+spring:
+    security:
+        enabled: false
+
+# 트래픽 파일 저장 위치
+file:
+    traffic:
+        path: D:\hycho\tools\nginx-1.13.6\html\data
+        name: traffic
+        extensions: traffic
