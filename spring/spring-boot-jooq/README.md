@@ -91,6 +91,13 @@ INSERT INTO book_to_book_store VALUES ('Buchhandlung im Volkshaus', 3, 1 );
 
 ## 3. 현재 진행 단계
 
-https://www.jooq.org/doc/3.10/manual-single-page/#jooq-in-7-steps-step6
+https://www.jooq.org/doc/3.10/manual-single-page/
 
-3.4.5. Using jOOQ with JAX-RS
+## 4. jooq static import
+
+```javascript
+import static org.jooq.impl.DSL.*;
+```
+
+
+
