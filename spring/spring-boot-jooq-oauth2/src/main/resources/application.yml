@@ -1,0 +1,36 @@
+# local profile
+server:
+    port: 8080
+    context-path:
+
+# Error 자동 페이지 이동 해제
+    error:
+        whitelabel:
+            enabled: false
+# 세션값            
+    session:
+        timeout: 1800
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/db_jooq
+        username: jooq
+        password: pray
+        dbcp2:
+            initial-size: 5
+            max-total: 10
+# preparedStatements 풀링(자주실행되는 Statements를 풀링해놓고 사용 성능이점)
+            pool-prepared-statements: true
+            max-open-prepared-statements: 10
+
+security:
+    user:
+        name: user
+        password: user
+    oauth2:
+        client:
+# client 식별 고유 정보
+            client-id: 233668646673605
+# 액세스 토큰 교환을 위한 정보(암호)
+            client-secret: 33b17e044ee6a4fa383f46ec6e28ea1d
